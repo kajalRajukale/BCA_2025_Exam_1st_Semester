@@ -1758,6 +1758,427 @@ Hint: Probability of observing the data if the null hypothesis is true.
 
 A p-value is the probability of observing the data, or something more extreme, if the null hypothesis is true.
 
+#### Question 21: What is a probability density function (PDF)?
+
+Hint: Function that describes the likelihood of a continuous random variable.
+
+#### Solution
+
+A probability density function (PDF) is a function that describes the likelihood of a continuous random variable taking on a particular value.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def pdf(x):
+    return (1 / np.sqrt(2 * np.pi)) * np.exp(-0.5 * x**2)
+
+x = np.linspace(-5, 5, 100)
+y = pdf(x)
+
+plt.plot(x, y)
+plt.title('Probability Density Function')
+plt.xlabel('x')
+plt.ylabel('PDF')
+plt.show()
+```
+
+#### Question 22: Define a cumulative distribution function (CDF).
+
+Hint: Function that describes the probability that a random variable is less than or equal to a certain value.
+
+#### Solution
+
+A cumulative distribution function (CDF) is a function that describes the probability that a random variable is less than or equal to a certain value.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def cdf(x):
+    return 0.5 * (1 + np.erf(x / np.sqrt(2)))
+
+x = np.linspace(-5, 5, 100)
+y = cdf(x)
+
+plt.plot(x, y)
+plt.title('Cumulative Distribution Function')
+plt.xlabel('x')
+plt.ylabel('CDF')
+plt.show()
+```
+
+#### Question 23: What is a z-score?
+
+Hint: Measure of how many standard deviations an element is from the mean.
+
+#### Solution
+
+A z-score is a measure of how many standard deviations an element is from the mean.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+
+def z_score(x, mean, std_dev):
+    return (x - mean) / std_dev
+
+data = [10, 12, 14, 16, 18]
+mean = np.mean(data)
+std_dev = np.std(data)
+z_scores = [z_score(x, mean, std_dev) for x in data]
+
+print(f"Z-scores: {z_scores}")
+```
+
+#### Question 24: Define a confidence interval.
+
+Hint: Range of values within which a population parameter is estimated to lie.
+
+#### Solution
+
+A confidence interval is a range of values within which a population parameter is estimated to lie with a certain level of confidence.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+import scipy.stats as stats
+
+data = [10, 12, 14, 16, 18]
+mean = np.mean(data)
+std_err = stats.sem(data)
+confidence = 0.95
+h = std_err * stats.t.ppf((1 + confidence) / 2, len(data) - 1)
+
+confidence_interval = (mean - h, mean + h)
+print(f"95% confidence interval: {confidence_interval}")
+```
+
+#### Question 25: What is a p-value?
+
+Hint: Probability of obtaining test results at least as extreme as the observed results.
+
+#### Solution
+
+A p-value is the probability of obtaining test results at least as extreme as the observed results, assuming that the null hypothesis is true.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+data = [10, 12, 14, 16, 18]
+t_stat, p_value = stats.ttest_1samp(data, 15)
+print(f"P-value: {p_value}")
+```
+
+#### Question 26: Define a null hypothesis.
+
+Hint: Statement that there is no effect or no difference.
+
+#### Solution
+
+A null hypothesis is a statement that there is no effect or no difference, and it is the hypothesis that researchers typically try to disprove.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+data = [10, 12, 14, 16, 18]
+t_stat, p_value = stats.ttest_1samp(data, 15)
+null_hypothesis = "mean = 15"
+print(f"Null hypothesis: {null_hypothesis}, P-value: {p_value}")
+```
+
+#### Question 27: What is an alternative hypothesis?
+
+Hint: Statement that there is an effect or a difference.
+
+#### Solution
+
+An alternative hypothesis is a statement that there is an effect or a difference, and it is the hypothesis that researchers typically try to support.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+data = [10, 12, 14, 16, 18]
+t_stat, p_value = stats.ttest_1samp(data, 15)
+alternative_hypothesis = "mean != 15"
+print(f"Alternative hypothesis: {alternative_hypothesis}, P-value: {p_value}")
+```
+
+#### Question 28: Define a type I error.
+
+Hint: Rejecting the null hypothesis when it is true.
+
+#### Solution
+
+A type I error is the error of rejecting the null hypothesis when it is true.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+data = [10, 12, 14, 16, 18]
+alpha = 0.05
+t_stat, p_value = stats.ttest_1samp(data, 15)
+type_I_error = p_value < alpha
+print(f"Type I error: {type_I_error}")
+```
+
+#### Question 29: What is a type II error?
+
+Hint: Failing to reject the null hypothesis when it is false.
+
+#### Solution
+
+A type II error is the error of failing to reject the null hypothesis when it is false.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+data = [10, 12, 14, 16, 18]
+beta = 0.2  # Assume beta is known
+power = 1 - beta
+print(f"Type II error (beta): {beta}, Power: {power}")
+```
+
+#### Question 30: Define statistical power.
+
+Hint: Probability of correctly rejecting the null hypothesis.
+
+#### Solution
+
+Statistical power is the probability of correctly rejecting the null hypothesis when it is false.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+data = [10, 12, 14, 16, 18]
+beta = 0.2  # Assume beta is known
+power = 1 - beta
+print(f"Statistical power: {power}")
+```
+
+#### Question 31: What is a t-test?
+
+Hint: Statistical test used to compare the means of two groups.
+
+#### Solution
+
+A t-test is a statistical test used to compare the means of two groups.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+group1 = [10, 12, 14, 16, 18]
+group2 = [11, 13, 15, 17, 19]
+t_stat, p_value = stats.ttest_ind(group1, group2)
+print(f"T-test: t-statistic = {t_stat}, p-value = {p_value}")
+```
+
+#### Question 32: Define an ANOVA test.
+
+Hint: Statistical test used to compare the means of three or more groups.
+
+#### Solution
+
+An ANOVA test is a statistical test used to compare the means of three or more groups.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+group1 = [10, 12, 14, 16, 18]
+group2 = [11, 13, 15, 17, 19]
+group3 = [12, 14, 16, 18, 20]
+f_stat, p_value = stats.f_oneway(group1, group2, group3)
+print(f"ANOVA: F-statistic = {f_stat}, p-value = {p_value}")
+```
+
+#### Question 33: What is a chi-square test?
+
+Hint: Statistical test used to compare observed and expected frequencies.
+
+#### Solution
+
+A chi-square test is a statistical test used to compare observed and expected frequencies.
+
+#### Example Program in Python
+
+```python
+import scipy.stats as stats
+
+observed = [10, 12, 14, 16, 18]
+expected = [11, 13, 15, 17, 19]
+chi2_stat, p_value = stats.chisquare(observed, expected)
+print(f"Chi-square test: chi2-statistic = {chi2_stat}, p-value = {p_value}")
+```
+
+#### Question 34: Define a correlation coefficient.
+
+Hint: Measure of the strength and direction of a linear relationship between two variables.
+
+#### Solution
+
+A correlation coefficient is a measure of the strength and direction of a linear relationship between two variables.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+
+x = [10, 12, 14, 16, 18]
+y = [11, 13, 15, 17, 19]
+correlation_coefficient = np.corrcoef(x, y)[0, 1]
+print(f"Correlation coefficient: {correlation_coefficient}")
+```
+
+#### Question 35: What is a linear regression?
+
+Hint: Statistical method for modeling the relationship between a dependent variable and one or more independent variables.
+
+#### Solution
+
+Linear regression is a statistical method for modeling the relationship between a dependent variable and one or more independent variables.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+x = np.array([10, 12, 14, 16, 18]).reshape(-1, 1)
+y = np.array([11, 13, 15, 17, 19])
+model = LinearRegression().fit(x, y)
+slope = model.coef_[0]
+intercept = model.intercept_
+print(f"Linear regression: slope = {slope}, intercept = {intercept}")
+```
+
+#### Question 36: Define a residual.
+
+Hint: Difference between the observed value and the predicted value.
+
+#### Solution
+
+A residual is the difference between the observed value and the predicted value in a regression model.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+x = np.array([10, 12, 14, 16, 18]).reshape(-1, 1)
+y = np.array([11, 13, 15, 17, 19])
+model = LinearRegression().fit(x, y)
+predictions = model.predict(x)
+residuals = y - predictions
+print(f"Residuals: {residuals}")
+```
+
+#### Question 37: What is a logistic regression?
+
+Hint: Statistical method for modeling the probability of a binary outcome.
+
+#### Solution
+
+Logistic regression is a statistical method for modeling the probability of a binary outcome.
+
+#### Example Program in Python
+
+```python
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+
+x = np.array([10, 12, 14, 16, 18]).reshape(-1, 1)
+y = np.array([0, 0, 1, 1, 1])
+model = LogisticRegression().fit(x, y)
+predictions = model.predict(x)
+print(f"Logistic regression predictions: {predictions}")
+```
+
+#### Question 38: Define a confusion matrix.
+
+Hint: Table used to evaluate the performance of a classification model.
+
+#### Solution
+
+A confusion matrix is a table used to evaluate the performance of a classification model by comparing the predicted and actual values.
+
+#### Example Program in Python
+
+```python
+from sklearn.metrics import confusion_matrix
+
+y_true = [0, 0, 1, 1, 1]
+y_pred = [0, 0, 1, 0, 1]
+conf_matrix = confusion_matrix(y_true, y_pred)
+print(f"Confusion matrix:\n{conf_matrix}")
+```
+
+#### Question 39: What is a ROC curve?
+
+Hint: Graphical representation of the performance of a binary classifier.
+
+#### Solution
+
+A ROC curve is a graphical representation of the performance of a binary classifier, plotting the true positive rate against the false positive rate.
+
+#### Example Program in Python
+
+```python
+from sklearn.metrics import roc_curve
+import matplotlib.pyplot as plt
+
+y_true = [0, 0, 1, 1, 1]
+y_scores = [0.1, 0.4, 0.35, 0.8, 0.7]
+fpr, tpr, thresholds = roc_curve(y_true, y_scores)
+
+plt.plot(fpr, tpr, marker='.')
+plt.title('ROC Curve')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.show()
+```
+
+#### Question 40: Define the area under the ROC curve (AUC).
+
+Hint: Measure of the ability of a classifier to distinguish between classes.
+
+#### Solution
+
+The area under the ROC curve (AUC) is a measure of the ability of a classifier to distinguish between classes.
+
+#### Example Program in Python
+
+```python
+from sklearn.metrics import roc_auc_score
+
+y_true = [0, 0, 1, 1, 1]
+y_scores = [0.1, 0.4, 0.35, 0.8, 0.7]
+auc = roc_auc_score(y_true, y_scores)
+print(f"Area under the ROC curve (AUC): {auc}")
+```
+
 ### 8. Matrices and Determinants
 
 #### Question 1: What is a matrix?
