@@ -25,6 +25,10 @@
 
 ### 2. Data Types and Operators
 
+#### Kajal
+
+i dont know what primitive is?
+
 #### Question: What are primitive data types in C?
 
     Primitive data types in C are `int`, `char`, `float`, and `double`.
