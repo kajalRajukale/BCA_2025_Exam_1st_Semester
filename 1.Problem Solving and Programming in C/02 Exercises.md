@@ -182,6 +182,10 @@ int main() {
 
 ### Exercise 7: Reverse a Number
 
+#### Questio from Kajal
+
+How to reverse a string
+
 #### Description: Write a program that takes an integer as input and prints its reverse.
 
 #### Hint: Use a loop to extract digits from the number and build the reversed number.
